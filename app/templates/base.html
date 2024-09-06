@@ -1,6 +1,8 @@
 <!-- simple base template -->
 <!-- all other templates derive from here  -->
 <!-- block controls where derived templates are inserted -->
+
+<!-- with = assigns the results of a function call to a variable -->
 <!doctype html>
 <html>
     <head>
@@ -12,9 +14,20 @@
     </head>
     <body>
         <div>
-            Microblog: <a href = '/index'>Home</a>
+            Microblog: 
+            <a href = '/index'>Home</a>
+            <a href = '/login'>Login</a>
         </div>
         <hr>
+        {% with message = get_flashed_messages() %}
+        {% if messags %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block content%}{% endblock %}
     </body>
 </html>
