@@ -1,4 +1,5 @@
 from app import app 
+from flask import render_template
 
 # view functions mapped to 1+ URLS
 # Flask knows what to execute when the client requests a URL
@@ -9,4 +10,15 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return 'Hello World!'
+    # mock user and post objects while we build out logic
+    user = {'username': 'Haley'}
+    posts = [
+        {
+            'author': {'username': 'John'}, 
+            'body': 'Beautiful day in Portland'
+        }, 
+        {'author': {'username': 'Susan'}, 
+         'body': 'My review of Challengers'}
+    ]
+
+    return render_template('index.html', title = 'Home', user = user, posts = posts)
