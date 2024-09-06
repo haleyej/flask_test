@@ -1,5 +1,5 @@
 from app import app 
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from app.forms import LoginForm
 
 # view functions mapped to 1+ URLS
@@ -34,4 +34,4 @@ def login():
             form.username.data, form.remember_me.data))
         return redirect('/index')
 
-    return render_template('login.html', title = 'Sign In', form = form)
+    return render_template(url_for('login'), title = 'Sign In', form = form)
