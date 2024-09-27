@@ -1,6 +1,6 @@
 #top level script to define a Flask instance
 import sqlalchemy as sa 
-import sqlachemy.orm as so
+import sqlalchemy.orm as so
 from app import app, db
 from app.models import User, Post
 
